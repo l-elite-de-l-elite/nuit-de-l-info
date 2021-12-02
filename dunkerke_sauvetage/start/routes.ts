@@ -21,9 +21,6 @@
 import HealthCheck from '@ioc:Adonis/Core/HealthCheck'
 import Route from '@ioc:Adonis/Core/Route'
 
-Route.get('/', async ({ view }) => {
-  return view.render('welcome')
-})
 
 Route.get('health', async ({ response }) => {
   const report = await HealthCheck.getReport()
@@ -31,4 +28,15 @@ Route.get('health', async ({ response }) => {
   return report.healthy
     ? response.ok(report)
     : response.badRequest(report)
+})
+
+Route.post('login', 'AuthController.login')
+
+Route.post('register', 'AuthController.register')
+
+Route.get('/dashboard', async ({ auth, response }) => {
+  const user = await auth.authenticate()
+
+  console.log(user)
+  response.send('It work')
 })
