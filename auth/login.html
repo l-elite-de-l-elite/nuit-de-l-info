@@ -27,7 +27,7 @@
       <div class="card-body">
         <p class="login-box-msg">Connectez-vous pour contribuer</p>
 
-        <form method="post">
+        <form onsubmit="return false;">
           <div class="input-group mb-3">
             <input id="email" type="email" class="form-control" placeholder="Email">
             <div class="input-group-append">
@@ -94,7 +94,8 @@
 
     function connexion() {
       fetch('/api/login', {
-        method: 'POST', body: JSON.stringify({
+        method: 'POST',
+        body: JSON.stringify({
           email: document.querySelector('#email').value,
           password: document.querySelector('#password').value
         }),
