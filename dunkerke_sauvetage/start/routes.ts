@@ -40,3 +40,13 @@ Route.get('/dashboard', async ({ auth, response }) => {
   console.log(user)
   response.send('It work')
 })
+
+Route.group(() => {
+  Route.group(() => {
+    Route.post('create', 'UnitsController.create')
+  }).prefix('unit')
+
+  Route.group(() => {
+    Route.post('/create', 'SauvetagesController')
+  }).prefix('/sauvetage')
+}).middleware('auth')
