@@ -22,31 +22,33 @@ import HealthCheck from '@ioc:Adonis/Core/HealthCheck'
 import Route from '@ioc:Adonis/Core/Route'
 
 
-Route.get('health', async ({ response }) => {
-  const report = await HealthCheck.getReport()
-
-  return report.healthy
-    ? response.ok(report)
-    : response.badRequest(report)
-})
-
-Route.post('login', 'AuthController.login')
-
-Route.post('register', 'AuthController.register')
-
-Route.get('/dashboard', async ({ auth, response }) => {
-  const user = await auth.authenticate()
-
-  console.log(user)
-  response.send('It work')
-})
-
 Route.group(() => {
-  Route.group(() => {
-    Route.post('create', 'UnitsController.create')
-  }).prefix('unit')
+  Route.get('health', async ({ response }) => {
+    const report = await HealthCheck.getReport()
+
+    return report.healthy
+      ? response.ok(report)
+      : response.badRequest(report)
+  })
+
+  Route.post('login', 'AuthController.login')
+
+  Route.post('register', 'AuthController.register')
+
+  Route.get('/dashboard', async ({ auth, response }) => {
+    const user = await auth.authenticate()
+
+    console.log(user)
+    response.send('It work')
+  })
 
   Route.group(() => {
-    Route.post('/create', 'SauvetagesController')
-  }).prefix('/sauvetage')
-}).middleware('auth')
+    Route.group(() => {
+      Route.post('create', 'UnitsController.create')
+    }).prefix('unit')
+
+    Route.group(() => {
+      Route.post('/create', 'SauvetagesController')
+    }).prefix('/sauvetage')
+  }).middleware('auth')
+}).prefix('/api')
