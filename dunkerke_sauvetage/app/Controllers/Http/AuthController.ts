@@ -11,9 +11,13 @@ export default class AuthController {
         user.username = request.input('username')
         user.password = request.input('password')
 
-        await user.save()
-
-        response.send('User created')
+        
+        try {
+            await user.save()
+            response.send('User created')
+        } catch {
+            response.badRequest('Invalid user')
+        }   
     }
 
     public async login ({ auth, request, response }: HttpContextContract) {
