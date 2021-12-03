@@ -29,7 +29,7 @@
 
         <form method="post">
           <div class="input-group mb-3">
-            <input type="email" class="form-control" placeholder="Email">
+            <input id="email" type="email" class="form-control" placeholder="Email">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-envelope"></span>
@@ -37,7 +37,7 @@
             </div>
           </div>
           <div class="input-group mb-3">
-            <input type="password" class="form-control" placeholder="Password">
+            <input id="password" type="password" class="form-control" placeholder="Password">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-lock"></span>
@@ -55,7 +55,7 @@
             </div>
             <!-- /.col -->
             <div class="col-5">
-              <button type="submit" class="btn btn-primary btn-block">Connexion</button>
+              <button type="submit" class="btn btn-primary btn-block" onclick="connexion()">Connexion</button>
             </div>
             <!-- /.col -->
           </div>
@@ -84,6 +84,51 @@
   <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- AdminLTE App -->
   <script src="../../dist/js/adminlte.min.js"></script>
+  <script>
+    var cookies = getCookie("CO");
+    if (cookies != null) {
+      console.log(cookies)
+    } else {
+      console.log("JE SUIS PAS CO")
+    }
+
+    function connexion() {
+      fetch('/api/login', {
+        method: 'POST', body: JSON.stringify({
+          email: document.querySelector('#email').value,
+          password: document.querySelector('#password').value
+        }),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      }).then((response) => response.json()).then((data) => {
+        console.log(data);
+      }).catch((error) => {
+        console.log(error);
+      });
+    }
+
+    function getCookie(name) {
+      var dc = document.cookie;
+      var prefix = name + "=";
+      var begin = dc.indexOf("; " + prefix);
+      if (begin == -1) {
+        begin = dc.indexOf(prefix);
+        if (begin != 0) return null;
+      }
+      else {
+        begin += 2;
+        var end = document.cookie.indexOf(";", begin);
+        if (end == -1) {
+          end = dc.length;
+        }
+      }
+      // because unescape has been deprecated, replaced with decodeURI
+      //return unescape(dc.substring(begin + prefix.length, end));
+      return decodeURI(dc.substring(begin + prefix.length, end));
+    }
+  </script>
 </body>
 
 </html>
