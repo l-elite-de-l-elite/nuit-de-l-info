@@ -7,12 +7,12 @@ export default class Sauvetages extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id').primary()
       table.integer('id_units').notNullable()
-      table.integer('nbPersonne').notNullable()
+      table.integer('nb_personne').notNullable()
       table.timestamp('date', { useTz: true }).notNullable()
-      table.integer('nbEquipage').notNullable()
-      table.integer('nbSauveteurDecede')
+      table.integer('nb_equipage').notNullable()
+      table.integer('nb_sauveteur_decede')
       table.integer('id_patron')
-      table.integer('id_sousPatron')
+      table.integer('id_sous_patron')
       table.text('recit')
       table.text('armement')
 
