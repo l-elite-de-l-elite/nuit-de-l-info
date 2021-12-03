@@ -98,7 +98,7 @@
                     <div class="container-fluid">
                         <div class="row mb-2">
                             <div class="col-sm-6">
-                                <h1 class="m-0"> Blalesfel fsfesf <small>Example 3.0</small></h1>
+                                <h1 class="m-0"> Ajout d'un naufrage</h1>
                             </div><!-- /.col -->
                             <div class="col-sm-6">
                                 <ol class="breadcrumb float-sm-right">
@@ -114,39 +114,44 @@
             <!-- Main content -->
             <div class="content">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card card-danger">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Ajout d'un bateau</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <input type="text" class="form-control" placeholder="Nom sauveteur">
+                                            </div>
+                                            <div class="col-4">
+                                                <input type="text" class="form-control" placeholder="Nom sauvé">
+                                            </div>
+                                            <div class="col-4">
+                                                <input type="text" class="form-control" placeholder="Nom bateau">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Description</label>
+                                                    <textarea class="form-control" rows="3"
+                                                        placeholder="Description ..."></textarea>
+                                                    <p><small>*pour plusieurs sauveteurs/sauvés utilisez le séparateur </small><strong>";"</strong></p>
+                                                    <a href="#" class="btn btn-sm btn-primary">Confirmer
+                                                      </a>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                            <div class="card card-danger">
-                                <div class="card-header">
-                                  <h3 class="card-title">Ajout d'un bateau</h3>
+                                    </div>
+                                    <!-- /.card-body -->
                                 </div>
-                                <div class="card-body">
-                                  <div class="row">
-                                    <div class="col-4">
-                                      <input type="text" class="form-control" placeholder="Nom sauveteur">
-                                    </div>
-                                    <div class="col-4">
-                                      <input type="text" class="form-control" placeholder="Nom sauvé">
-                                    </div>
-                                    <div class="col-4">
-                                      <input type="text" class="form-control" placeholder="Nom bateau">
-                                    </div>
-                                  </div>
-                                  <div class="row">
-                                      <div class="col-md-12">
-                                          <div class="form-group">
-                                            <label>Textarea</label>
-                                            <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
-                                          </div>
-                                      </div>
-                                  </div>
-
-                                </div>
-                                <!-- /.card-body -->
-                              </div>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div><!-- /.container-fluid -->
             </div>
             <!-- /.content -->
@@ -161,16 +166,10 @@
 
         <!-- Main Footer -->
         <footer class="main-footer">
-            <!-- To the right -->
-            <div class="float-right d-none d-sm-inline">
-                Anything you want
-            </div>
             <!-- Default to the left -->
-            <strong>Copyright &copy; 2014-
+            <strong>
                 <script>document.write(new Date().getFullYear())</script>
-                <a href="https://CSorigins.com">CSorigins</a>.
-            </strong> All rights
-            reserved.
+            </strong>
         </footer>
     </div>
     <!-- ./wrapper -->
